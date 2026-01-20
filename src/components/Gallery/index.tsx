@@ -5,19 +5,28 @@ import galeriaModelo from '../../assets/images/galeria-modelo.jpg';
 import galeriaTenisColorido from '../../assets/images/galeria-tenis-colorido.jpg';
 import galeriaTenisBrancoEPreto from '../../assets/images/galeria-tenis-branco-e-preto.jpg';
 import galeriaTenisCinza from '../../assets/images/galeria-tenis-cinza.jpg';
+import { Overlay } from '../Overlay';
+import { Button } from '../Button';
 
 export const Gallery = () => {
     return (
         <section className="container py-10">
             <div className="gallery-grid">
-                <div className="gallery-highlight rounded-[20px] overflow-hidden">
+                <div className="gallery-highlight rounded-[20px] overflow-hidden relative">
                     <img
                         src={galeriaHomem}
                         alt="Krypton One - Estilo urbano com atitude"
                         className="w-full h-full object-cover"
                     />
+                    <Overlay 
+                    title="Krypton One" 
+                    subtitle="Estilo urbano com atitude" 
+                    className="inset-0 justify-center">
+                        <Button variant="secondary" size="sm">Feminino</Button>
+                        <Button variant="secondary" size="sm">Masculino</Button>
+                    </Overlay>
                 </div>
-
+               
                 <div className="gallery-sneaker-purple rounded-[20px] overflow-hidden">
                     <img
                         src={galeriaTenisRoxo}
