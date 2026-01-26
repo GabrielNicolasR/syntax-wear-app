@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { isValidCPF } from "../../utils/cpf.validator";
 
-
 export const registerUserFormSchema = z
     .object({
         firstName: z
