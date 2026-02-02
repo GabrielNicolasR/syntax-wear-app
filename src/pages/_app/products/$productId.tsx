@@ -48,7 +48,7 @@ function RouteComponent() {
           ou <span className='text-[#38373A] font-semibold'>6x</span> de <span className='text-[#38373A] font-semibold'>{formatCurrency(inInstallmentsPrice)}</span>
         </p>
 
-        <p className='max-w-[500px] my-5'>{filteredProduct?.description}</p>
+        <p className='max-w-125 my-5'>{filteredProduct?.description}</p>
 
         <div className='mb-6'>
           <p className='text-sm'>Calcular o prazo de entrega</p>
