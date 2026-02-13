@@ -1,19 +1,35 @@
 import Banner from '@/assets/images/banner.jpg';
 import { Button } from '../Button';
 import { Overlay } from '../Overlay';
+import { useRouter } from '@tanstack/react-router';
 
 export const Hero = () => {
+
+    const router = useRouter();
+
     return (
         <div className="container">
             <section className='relative h-125 rounded-[20px] mb-10'>
                 <img src={Banner} alt="Homem sentado com os tênis da SyntaxWear" className='w-full h-full object-cover rounded-[20px]' />
 
                 <Overlay
-                    title="Kripton One" 
-                    subtitle="Transforme qualquer passo em presença" 
+                    title="Kripton One"
+                    subtitle="Transforme qualquer passo em presença"
                     className='justify-end bottom-0 px-6 md:px-24 pb-24 md:items-end'>
-                    <Button variant="secondary">Comprar agora</Button>
-                    <Button variant="primary">Ver coleção</Button>
+                    <Button
+                        variant="secondary"
+                        onclick={() =>
+                            router.navigate({ to: "/products" })
+                        }
+                    >
+                        Ver modelos
+                    </Button>
+                    <Button
+                        variant="primary"
+                    >
+                        Comprar agora
+
+                    </Button>
                 </Overlay>
             </section>
         </div>

@@ -5,6 +5,7 @@ import { CartContext } from '../../../contexts/CartContext';
 import { useContext } from 'react';
 import { CEPForm } from '../../../components/CEPForm';
 
+
 export const Route = createFileRoute('/_app/products/$productId')({
   component: RouteComponent,
 })
@@ -19,53 +20,65 @@ function RouteComponent() {
     product => product.id === Number(productId)
   );
 
-  if(!filteredProduct) return;
+  if (!filteredProduct) return (
+    <section className='container mb-10 pt-44 md:pt54 pb-10 md:px-10 text-center min-h-[80vh] flex flex-col items-center justify-center'>
+      <h1 className='text-3xl font-bold mb-4'>Produto não encontrado</h1>
+      <p className='text-gray-500'>
+        O produto solicitado não existe ou está indisponível.
+      </p>
+      <Link to='/products' className='text-[#6528D3] hover:underline mt-4 inline-block'>Voltar para a página de produtos</Link>
+    </section>
+  )
+
+
 
   const originalPrice = filteredProduct?.price ?? 0;
   const discountPrice = originalPrice * 0.9
   const inInstallmentsPrice = originalPrice / 6
 
-  return <section className='container mb-10 pt-44 md:pt54 pb-10 md:px-10'>
-    <nav className='text-sm mb-15 ml-5'>
+  return (
+    <section className='container mb-10 pt-44 md:pt54 pb-10 md:px-10'>
+      <nav className='text-sm mb-15 ml-5'>
 
-      <Link to='/'>Home</Link> / {" "}
-      <Link to='/products'>Produtos</Link> / {" "}
-      <span className='font-semibold'>{filteredProduct?.name}</span>
-    </nav>
+        <Link to='/'>Home</Link> / {" "}
+        <Link to='/products'>Produtos</Link> / {" "}
+        <span className='font-semibold'>{filteredProduct?.name}</span>
+      </nav>
 
-    <div className='flex justify-center gap-10'>
-      <img src={filteredProduct?.image} alt={filteredProduct?.name} className='w-125 bg-white rounded-2xl' />
+      <div className='flex justify-center gap-10'>
+        <img src={filteredProduct?.image} alt={filteredProduct?.name} className='w-125 bg-white rounded-2xl' />
 
-      <div>
-        <h1 className='text-4xl font-bold mb-1'>{filteredProduct?.name}</h1>
+        <div>
+          <h1 className='text-4xl font-bold mb-1'>{filteredProduct?.name}</h1>
 
-        <p className='mb-2'>
-          Cor: {filteredProduct?.color}
-        </p>
+          <p className='mb-2'>
+            Cor: {filteredProduct?.color}
+          </p>
 
-        <p className='line-through text-sm text-[#878787]'>
-          {formatCurrency(originalPrice)}
-        </p>
-        <p className='text-3xl font-bold md-2'>
-          {formatCurrency(discountPrice)} no PIX
-        </p>
-        <p className='text-sm text-[#878787]'>
-          Você economiza: <span className='font-semibold'>10%</span>
-        </p>
+          <p className='line-through text-sm text-[#878787]'>
+            {formatCurrency(originalPrice)}
+          </p>
+          <p className='text-3xl font-bold md-2'>
+            {formatCurrency(discountPrice)} no PIX
+          </p>
+          <p className='text-sm text-[#878787]'>
+            Você economiza: <span className='font-semibold'>10%</span>
+          </p>
 
-        <p>
-          ou <span className='text-[#38373A] font-semibold'>6x</span> de <span className='text-[#38373A] font-semibold'>{formatCurrency(inInstallmentsPrice)}</span>
-        </p>
+          <p>
+            ou <span className='text-[#38373A] font-semibold'>6x</span> de <span className='text-[#38373A] font-semibold'>{formatCurrency(inInstallmentsPrice)}</span>
+          </p>
 
-        <p className='max-w-125 my-5'>{filteredProduct?.description}</p>
+          <p className='max-w-125 my-5'>{filteredProduct?.description}</p>
 
-        <div className='mb-6'>
-          <p className='text-sm'>Calcular o prazo de entrega</p>
-          <CEPForm />
+          <div className='mb-6'>
+            <p className='text-sm'>Calcular o prazo de entrega</p>
+            <CEPForm />
+          </div>
+
+          <button className='bg-black text-white py-3 px-6 rounded-md cursor-pointer hover:bg-gray-800' onClick={() => addToCart(filteredProduct)}>Adicionar ao carinho</button>
         </div>
-
-        <button className='bg-black text-white py-3 px-6 rounded-md cursor-pointer hover:bg-gray-800' onClick={() => addToCart(filteredProduct)}>Adicionar ao carinho</button>
       </div>
-    </div>
-  </section>
+    </section>
+  )
 }
