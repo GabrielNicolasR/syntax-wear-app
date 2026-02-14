@@ -26,6 +26,9 @@ export const Hero = () => {
                     </Button>
                     <Button
                         variant="primary"
+                        onclick={() =>
+                            router.navigate({ to: "/products" })
+                        }
                     >
                         Comprar agora
 

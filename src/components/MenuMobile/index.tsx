@@ -58,8 +58,6 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
                             <Link to="/about" onClick={toggleMenu}>Sobre</Link>
                         </li>
                     </ul>
-
-
                 </div>
             </div >
         </>
