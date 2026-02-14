@@ -15,7 +15,7 @@ export const Route = createFileRoute('/_auth/sign-in')({
 
 function RouteComponent() {
   return (
-    <section className='bg-[#f5f5f5] h-screen w-full flex justify-center items-center p-5'>
+    <section className='bg-surface h-screen w-full flex justify-center items-center p-5'>
       <div className='w-[450px] bg-white rounded-2xl p-10 shadow-md'>
         <div className='flex flex-col'>
           <Logo />
@@ -32,7 +32,7 @@ function RouteComponent() {
 
           <p className='mt-3.5'>
             Ainda não tem uma conta?{" "}
-            <Link to="/sign-up" className='ml-1 text-[#5433EB] hover:underline'>
+            <Link to="/sign-up" className='ml-1 text-accent hover:underline'>
               Cadastre-se
             </Link>
           </p>
