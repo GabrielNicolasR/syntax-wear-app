@@ -12,16 +12,6 @@ export const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
         useContext(CartContext)
     return (
         <>
-            <button
-                className="relative cursor-pointer"
-                onClick={onClose}>
-                {cart.length > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                        {cart.length}
-                    </span>
-                )}
-            </button>
-
             <div className={`${isOpen ? "bg-black/70 visible" : "bg-transparent invisible"} fixed top-0 bottom-0 left-0 right-0 z-40`}
                 onClick={onClose}>
                 <div className={`${isOpen ? "translate-x-0" : "translate-x-full"} absolute top-0 right-0 bottom-0 bg-white pt-6 transition-all duration-500 ease-in-out w-75 md:w-106 z-50`} onClick={(e) => e.stopPropagation()}>
